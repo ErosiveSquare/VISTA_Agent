@@ -1,0 +1,37 @@
+# 凭据 —— 任何时候都不入库
+.env
+.env.*
+!.env.example
+*.key
+secrets.*
+
+# VISTA 运行产物
+.vista/sessions/
+.vista/demo/
+.vista/repomap.cache
+.vista/config.toml
+
+# 注意：.vista/project.md 与 .vista/skills/ 是刻意要提交的。
+# 它们是项目资产，也是记忆机制真实产出的证据。
+
+# 评测结果
+evals/results/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+
+# 编辑器与系统
+.idea/
+.vscode/
+.DS_Store
+*.swp

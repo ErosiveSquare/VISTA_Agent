@@ -1,0 +1,13 @@
+# VISTA 的必需依赖：无。
+# 只需要 Python 3.11 或更高版本的标准库即可完整运行。
+#
+# 下面是可选增强，装了效果更好，不装会自动降级（vista doctor 可以查看当前状态）：
+#
+#   tiktoken>=0.7                    精确 token 计数；缺失时使用中英混合启发式估算
+#   tree_sitter_language_pack>=0.2   语法树符号抽取；缺失时使用正则抽取器
+#   PyYAML>=6.0                      技能卡解析；缺失时使用内置 YAML 子集解析器
+#   openai>=1.40                     provider="openai" 时使用；
+#                                    默认 provider="http" 只用标准库 urllib 直连兼容网关
+#
+# 安装全部可选增强：
+#   pip install -e ".[enhanced]"
