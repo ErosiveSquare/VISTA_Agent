@@ -1,0 +1,7 @@
+id: js-slug-unicode
+fixture: jsutil
+tags: [feature, javascript]
+prompt: slugify 目前会把中文等非 ASCII 字符全部丢掉。请改成保留 Unicode 字母与数字（只把标点和空白折叠成连字符），同时保持已有的三个测试全部通过。
+verify: node -e 'const {slugify}=require("./src/slug"); if(slugify("Hello World")!=="hello-world") throw new Error("ascii_regression"); if(slugify("你好 世界")!=="你好-世界") throw new Error("unicode_failed"); if(slugify("  A, B & C!  ")!=="a-b-c") throw new Error("punct_fold")' && node --test test/
+max_steps: 25
+timeout: 900

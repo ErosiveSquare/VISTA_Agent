@@ -1,0 +1,7 @@
+id: audit-integration
+fixture: pyauth
+tags: [feature, multi-file, python]
+prompt: 把 src/audit.py 的 AuditLog 接进 AuthService：register 时记录 register 动作，deactivate 成功时记录 deactivate 动作，并暴露 AuthService.audit 属性。同时修复 verify() 里已知的时区 bug，让全部非 legacy 测试通过。
+verify: python3 -c 'from src.service import AuthService; s=AuthService(); s.register("u1","U1"); s.deactivate("u1"); acts=[e.action for e in s.audit.for_user("u1")]; assert "register" in acts and "deactivate" in acts, acts' && python3 -m unittest tests.test_auth tests.test_service -q
+max_steps: 35
+timeout: 900

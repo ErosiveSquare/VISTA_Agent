@@ -1,0 +1,7 @@
+id: low-stock-report
+fixture: pystore
+tags: [feature, single-file, python]
+prompt: 给 Inventory 增加 low_stock(threshold) 方法，返回库存严格小于 threshold 的商品列表，按 sku 升序排列。
+verify: python3 -c 'from store.inventory import Inventory; from store.models import Item; inv=Inventory(); inv.put(Item("B2","G",100,1)); inv.put(Item("A1","W",100,5)); inv.put(Item("C3","H",100,0)); got=[i.sku for i in inv.low_stock(3)]; assert got==["B2","C3"], got' && python3 -m unittest discover -s tests -t . -q
+max_steps: 20
+timeout: 600

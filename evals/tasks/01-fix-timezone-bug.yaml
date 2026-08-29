@@ -1,0 +1,8 @@
+id: fix-timezone-bug
+fixture: pyauth
+tags: [bugfix, single-file, python]
+prompt: tests/test_auth.py 里的用例报 TypeError，说不能比较 offset-naive 和 offset-aware 的 datetime。请定位根因并修复 src/ 下的代码，不要修改测试。
+verify: python3 -m unittest tests.test_auth tests.test_service -q
+max_steps: 25
+timeout: 600
+pair: verify() 抛出时区相关的 TypeError，请修复 src/auth.py 中的时间比较逻辑

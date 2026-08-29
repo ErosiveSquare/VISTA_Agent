@@ -1,0 +1,7 @@
+id: fix-legacy-flow
+fixture: pyauth
+tags: [bugfix, long, python]
+prompt: 请实现 legacy login 流程：在 AuthService 上增加 legacy_login(user_id, name) 方法，注册用户并返回令牌；然后修改 tests/test_legacy.py 让它真正验证这个流程而不是直接 fail。另外 verify() 有一个时区 bug 也需要一并修好，最终全部测试都要通过。
+verify: python3 -m unittest discover -s tests -t . -q
+max_steps: 40
+timeout: 1200

@@ -1,0 +1,7 @@
+id: refactor-pricing
+fixture: pystore
+tags: [refactor, multi-file, python]
+prompt: 把 Pricing.subtotal 和 total 里对 catalog 的直接依赖抽出来：新增一个模块级函数 line_total(item, qty) 计算单行金额，subtotal 改为调用它。行为必须完全不变，全部测试仍要通过。
+verify: python3 -c 'from store.pricing import line_total, Pricing; from store.models import Item, OrderLine; from store.inventory import Inventory; assert line_total(Item("A1","W",250,9),4)==1000; inv=Inventory(); inv.put(Item("A1","W",250,9)); assert Pricing().subtotal([OrderLine("A1",4)],inv)==1000' && python3 -m unittest discover -s tests -t . -q
+max_steps: 25
+timeout: 900

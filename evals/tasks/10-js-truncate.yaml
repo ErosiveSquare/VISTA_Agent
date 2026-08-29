@@ -1,0 +1,7 @@
+id: js-truncate
+fixture: jsutil
+tags: [feature, javascript]
+prompt: 在 src/ 下新增一个 truncate(text, maxLen) 函数并从 src/index.js 导出：字符串超过 maxLen 时截断并以单个省略号字符结尾，且结果总长度不超过 maxLen；不超过时原样返回；非字符串输入返回空字符串。同时在 test/ 下补充测试。
+verify: node -e 'const {truncate}=require("./src/index"); if(truncate("hello world",8)!=="hello w\u2026") throw new Error("bad_truncate"); if(truncate("short",10)!=="short") throw new Error("should_not_truncate"); if(truncate(null,5)!=="") throw new Error("non_string")' && node --test test/
+max_steps: 30
+timeout: 900

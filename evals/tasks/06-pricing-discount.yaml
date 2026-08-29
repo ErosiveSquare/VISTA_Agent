@@ -1,0 +1,7 @@
+id: pricing-discount
+fixture: pystore
+tags: [feature, multi-file, python]
+prompt: 给 Pricing 增加折扣支持：构造参数新增 discount_rate（默认 0.0），total() 的计算顺序是先按 discount_rate 打折，再对折后金额计税。四舍五入用 round。请确保已有测试仍然通过。
+verify: python3 -c 'from store.pricing import Pricing; from store.models import Item, OrderLine; from store.inventory import Inventory; inv=Inventory(); inv.put(Item("A1","W",1000,10)); p=Pricing(tax_rate=0.1,discount_rate=0.2); t=p.total([OrderLine("A1",1)],inv); assert t==round(800*1.1), t' && python3 -m unittest discover -s tests -t . -q
+max_steps: 30
+timeout: 900

@@ -1,0 +1,7 @@
+id: order-cancel
+fixture: pystore
+tags: [feature, multi-file, python]
+prompt: 给 OrderService 增加 cancel(order_id) 方法：把订单占用的库存全部退回，把订单标记为 cancelled 并返回 True；订单不存在或已取消则返回 False。
+verify: python3 -c 'from store.inventory import Inventory; from store.models import Item, OrderLine; from store.orders import OrderService; inv=Inventory(); inv.put(Item("A1","W",1000,10)); s=OrderService(inv); o=s.place([OrderLine("A1",3)]); assert inv.get("A1").stock==7; assert s.cancel(o["id"]) is True; assert inv.get("A1").stock==10, inv.get("A1").stock; assert s.cancel(o["id"]) is False; assert s.cancel(999) is False' && python3 -m unittest discover -s tests -t . -q
+max_steps: 30
+timeout: 900

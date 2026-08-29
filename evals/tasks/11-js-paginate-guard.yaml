@@ -1,0 +1,7 @@
+id: js-paginate-guard
+fixture: jsutil
+tags: [bugfix, javascript]
+prompt: paginate() 目前没有对越界页码做保护：page 小于 1 或大于 totalPages 时会返回空数组。请修改成把 page 夹紧到 [1, totalPages] 区间，并且在 items 为空数组时 totalPages 至少为 1。已有测试必须继续通过。
+verify: node -e 'const {paginate}=require("./src/paginate"); const it=Array.from({length:45},(_,i)=>i+1); let r=paginate(it,0,20); if(r.page!==1||r.items.length!==20) throw new Error("page<1 未夹紧"); r=paginate(it,99,20); if(r.page!==3||r.items.length!==5) throw new Error("page 越界未夹紧"); r=paginate([],1,20); if(r.totalPages!==1) throw new Error("空数组 totalPages 应为 1")' && node --test test/
+max_steps: 25
+timeout: 900

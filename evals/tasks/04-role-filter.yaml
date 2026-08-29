@@ -1,0 +1,7 @@
+id: role-filter
+fixture: pyauth
+tags: [feature, single-file, python]
+prompt: 给 UserRepo 增加 by_role(role) 方法，返回该角色下所有 active 的用户，按 user_id 升序排列。
+verify: python3 -c 'from src.users import User, UserRepo; r=UserRepo(); r.add(User("b","B",role="admin")); r.add(User("a","A",role="admin")); r.add(User("c","C")); r.add(User("d","D",role="admin",active=False)); got=[u.user_id for u in r.by_role("admin")]; assert got==["a","b"], got' && python3 -m unittest tests.test_service -q
+max_steps: 20
+timeout: 600

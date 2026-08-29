@@ -1,0 +1,7 @@
+id: add-refresh-token
+fixture: pyauth
+tags: [feature, single-file, python]
+prompt: 给 TokenManager 增加一个 refresh(token, ttl) 方法：校验旧令牌有效后签发一个新的令牌并返回；旧令牌无效时返回 None。同时在 tests/ 下补充对应的测试用例。注意 verify() 目前有一个时区 bug，你可能需要先把它修好。
+verify: python3 -c 'from src.auth import TokenManager; tm=TokenManager(); t=tm.issue("alice",ttl=60); n=tm.refresh(t,ttl=120); assert n and tm.verify(n)=="alice", "refresh 未返回有效令牌"; assert tm.refresh("garbage.sig",ttl=60) is None, "无效令牌应返回 None"' && python3 -m unittest tests.test_auth -q
+max_steps: 30
+timeout: 900
