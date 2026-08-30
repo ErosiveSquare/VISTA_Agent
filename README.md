@@ -1,6 +1,6 @@
 # VISTA_Agent
 
-李炅阳_2026.08.27开始
+2026.08.27开始
 
 **V**erified · **I**ndexed · **S**elf-evolving · **T**iered-memory · **A**nchored-context
 —— 一个从零实现的编程智能体（coding agent）。
