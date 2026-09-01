@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/badge/license-MIT-6FCF97)](LICENSE)
 [![Agent Framework](https://img.shields.io/badge/agent_framework-none-E8A33D)](DESIGN.md)
 
-[设计说明](DESIGN.md) · [用户手册](docs/USER_MANUAL.md) · [评测任务](evals/tasks)
+[设计说明](DESIGN.md) · [用户手册](docs/USER_MANUAL.md) 
 
 </div>
 
