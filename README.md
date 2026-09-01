@@ -27,6 +27,8 @@ ASSEMBLE → INFER → DECIDE → DISPATCH → OBSERVE
     └──────── 继续修复 / 验收反馈 ──────────┘
 ```
 
+![VISTA Agent 工作流程](Pipeline.png)
+
 ## 核心设计
 
 | 机制 | 作用 |
@@ -81,6 +83,11 @@ vista report             # 生成最近一次会话的 HTML 报告
 
 完整参数、配置文件与权限说明见[用户手册](docs/USER_MANUAL.md)。
 
+## 完成结果
+1. VISTA已实现自举（为自己开发了 Web 版的完整前后端）。
+
+2. 我使用SWE-bench Verified Mini数据集，在Auto DL云服务器上，部署了SWEbench测评的Docker镜像（74% Resolved，Wilson 95% CI 58.3%–82.5%），对比了Only Loop、Mini SWE Agent等Baseline，验证了VISTA有效性，Token消耗上也有提升空间。
+   
 ## 实现边界
 
 - 不使用 LangChain、LlamaIndex、AutoGen、CrewAI、OpenAI Agents SDK 等 Agent 框架。
